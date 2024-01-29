@@ -1,13 +1,74 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+@keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .nav-link {
+    animation: fadeInUp 0.5s ease-in-out;
+    animation-fill-mode: both;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .nav-link:hover,
+  .nav-link:focus {
+    color:black; /* Change color on hover/focus */
+    transform: scale(1.1); /* Scale up on hover/focus */
+  }
+  
+  /* Additional hover and focus effects */
+  .nav-link:hover::before,
+  .nav-link:focus::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    bottom: 0;
+    left: 0;
+    transform-origin: bottom right;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .nav-link:hover::before {
+    transform-origin: bottom left;
+  }
+  
+  .nav-link:hover::before,
+  .nav-link:focus::before {
+    transform: scaleX(1);
+  }
+  
+  .nav-link:hover::after,
+  .nav-link:focus::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color:black;
+    top: 0;
+    left: 0;
+    transform-origin: top left;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .nav-link:hover::after {
+    transform-origin: top right;
+  }
+  
+  .nav-link:hover::after,
+  .nav-link:focus::after {
+    transform: scaleX(1);
+  }
+  
